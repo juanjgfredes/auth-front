@@ -1,42 +1,64 @@
 <form class="login100-form"
+      [formGroup]="myForm"
       autocomplete="off"
+      (ngSubmit)="register()"
       >
 
     <span class="login100-form-title p-b-49">
         Registro
     </span>
 
-    <div class="wrap-input100 m-b-23">
+    <div class="wrap-input100 m-b-23" data-validate=""
+        formErrors
+        [error]="email.errors"
+        [touched]="email.touched"
+    >
         <span class="label-input100">Correo</span>
         <input
                class="input100"
+               formControlName="email"
                type="email"
                placeholder="Correo electrónico">
         <span class="focus-input100"></span>
     </div>
 
-    <div class="wrap-input100 m-b-23">
+    <div class="wrap-input100 m-b-23" data-validate=""
+        formErrors
+        [error]="name.errors"
+        [touched]="name.touched"
+    >
       <span class="label-input100">Nombre</span>
       <input
              class="input100"
+             formControlName="name"
              type="email"
              placeholder="Correo electrónico">
       <span class="focus-input100"></span>
   </div>
 
-    <div class="wrap-input100">
+    <div class="wrap-input100" data-validate=""
+        formErrors
+        [error]="password.errors"
+        [touched]="password.touched"
+    >
         <span class="label-input100">Contraseña</span>
         <input
                class="input100"
+               formControlName="password"
                type="password"
                placeholder="Ingrese su contraseña">
         <span class="focus-input100"></span>
     </div>
 
-    <div class="wrap-input100">
+    <div class="wrap-input100" data-validate=""
+        formErrors
+        [error]="myForm.errors"
+        [touched]="passwordRepeated.touched"
+    >
       <span class="label-input100">Repetir contraseña</span>
       <input
              class="input100"
+             formControlName="passwordRepeated"
              type="password"
              placeholder="Ingrese su contraseña">
       <span class="focus-input100"></span>
@@ -61,8 +83,31 @@
         </span>
 
         <a routerLink="/auth/login" class="txt2">
-            Logearse aqui
+            Ingrese aqui
         </a>
     </div>
 </form>
+
+<h2>Form Valid: {{ myForm.valid }} </h2>
+<h2>Form Status: {{ myForm.status }} </h2>
+<h2>Form Pending: {{ myForm.pending }} </h2>
+<h2>Form touched: {{ myForm.touched }} </h2>
+<h2>Form dirty: {{ myForm.dirty }} </h2>
+<h2>Form errors</h2>
+<pre>{{ myForm.errors | json }}</pre>
+
+<h5>Email</h5>
+<pre>{{ myForm.controls['email'].errors| json }}</pre>
+
+<h5>Password</h5>
+<pre>{{ myForm.controls['password'].errors | json }}</pre>
+
+<h5>Password touched: {{ myForm.controls['password'].touched }}</h5>
+
+<h5>Name</h5>
+<pre>{{ myForm.controls['name'].errors| json }}</pre>
+
+<h5>PasswordRepeateed</h5>
+<pre>{{ myForm.controls['passwordRepeated'].errors | json }}</pre>
+
 

@@ -49,9 +49,13 @@ export class FormErrorsDirective implements OnInit {
         case 'minlength':
           const min = this._error["minlength"]["requiredLength"];
           message = `${ traslatedName } debe tener un minimo de ${ min } caracteres`;
-          break
+          break;
         case 'email':
           message = 'El formato del email es incorrecto';
+          break;
+        case 'fieldsEquals':
+          message = 'Las contraseñas no coinciden';
+          break;
       }
 
       this.elementHtml.nativeElement.setAttribute( 'data-validate', message );

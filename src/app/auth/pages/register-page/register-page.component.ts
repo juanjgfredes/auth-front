@@ -31,4 +31,19 @@ export class RegisterPageComponent {
     return this.myForm.controls['email'];
   }
 
+  get name() {
+    return this.myForm.controls['name'];
+  }
+
+  get passwordRepeated() {
+    return this.myForm.controls['passwordRepeated'];
+  }
+
+  register():void {
+    if ( this.myForm.invalid ) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+  }
+
 }
