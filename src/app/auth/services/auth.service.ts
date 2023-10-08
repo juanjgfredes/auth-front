@@ -3,6 +3,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { AuthStatus, CheckTokenResponse, LoginResponse, User } from '../interfaces';
+import { RegistrationData } from '../interfaces/registration-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,18 @@ export class AuthService {
         this._authStatus.set( AuthStatus.notAuthenticated );
         return of ( false) ;
       })
+    )
+  }
+
+  register( data: RegistrationData ): Observable<boolean> {
+
+    const url = `${ this.baseUrl }/auth/register`;
+
+    return this.http.post<LoginResponse>( url, data ).pipe(
+
+      map(({ user, token }) => this.setAuthentication( user, token )),
+      catchError( err => throwError(() => err.error.message ))
+
     )
   }
 

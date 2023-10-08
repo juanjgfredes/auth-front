@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { fieldsEquals } from '../../validators/fields-equals.validator';
+import Swal from 'sweetalert2'
+
 
 @Component({
   templateUrl: './register-page.component.html',
@@ -44,6 +46,21 @@ export class RegisterPageComponent {
       this.myForm.markAllAsTouched();
       return;
     }
+
+    const registerData = {
+      name: this.name.value,
+      email: this.email.value,
+      password: this.password.value,
+    }
+
+    this.authSerivice.register( registerData ).subscribe(
+      {
+
+        next: () => this.router.navigateByUrl( '/dashboard' ),
+        error: ( message ) => Swal.fire( 'Error', message, 'error' )
+
+      }
+    )
   }
 
 }
