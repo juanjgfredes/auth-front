@@ -410,6 +410,58 @@ button:hover {
   }
 }
 
+/*[ DASHBOARD ]
+///////////////////////////////////////////////////////////
+*/
+
+.body-dashboard {
+  font-family: Arial, sans-serif;
+  background-image: url('assets/images/bg-01.jpg'); /* Reemplaza 'fondo.jpg' con la ruta correcta de tu imagen */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+.user-info {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.user-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.user-info p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.logout-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
+}
 
 /*[ PADDING ]
 ///////////////////////////////////////////////////////////
